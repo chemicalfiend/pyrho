@@ -43,11 +43,11 @@ def to_liouville(rho):
         #        idx += 1
         #return rho_vec
         #return rho.reshape(-1).astype(np.complex_)
-        return rho.flatten().astype(np.complex_)
+        return rho.flatten().astype(complex)
     else:
         # A tensor to a matrix 
         ns = rho.shape[0]
-        rho_mat = np.zeros((ns*ns,ns*ns), dtype=np.complex_) 
+        rho_mat = np.zeros((ns*ns,ns*ns), dtype=complex) 
         I = 0
         for i in range(ns):
             for j in range(ns):
@@ -69,7 +69,7 @@ def from_liouville(rho_vec, ns=None):
     #        rho[i,j] = rho_vec[idx]
     #        idx += 1
     #return rho
-    return rho_vec.reshape(ns,ns).astype(np.complex_)
+    return rho_vec.reshape(ns,ns).astype(complex)
 
 def transform_rho(transform, rhos):
     rhos = np.array(rhos)

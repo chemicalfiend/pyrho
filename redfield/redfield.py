@@ -99,15 +99,15 @@ class Redfield(Unitary):
 
         """
         ns = self.ham.nsite
-        gamma_plus = np.zeros((ns,ns,ns,ns), dtype=np.complex_)
-        gamma_minus = np.zeros((ns,ns,ns,ns), dtype=np.complex_)
+        gamma_plus = np.zeros((ns,ns,ns,ns), dtype=complex)
+        gamma_minus = np.zeros((ns,ns,ns,ns), dtype=complex)
 
         for a in range(self.ham.nbath):
             if self.method in ['TC2', 'TCL2']:
                 bath_corr_t = self.ham.sd[a].bath_corr(t)
 
             Ga = self.ham.site2eig( self.ham.sysbath[a] )
-            theta_plus_a = np.zeros((ns,ns), dtype=np.complex_)
+            theta_plus_a = np.zeros((ns,ns), dtype=complex)
             for i in range(ns):
                 for j in range(ns):
                     omega_ij = self.ham.omega_diff[i,j]

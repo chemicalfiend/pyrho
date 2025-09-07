@@ -94,7 +94,8 @@ class HEOM(Unitary):
         hbar = const.hbar
 
         if self.ham.sd[0].sd_type == 'ohmic-lorentz': 
-            self.c = np.zeros((self.ham.nbath, self.Nk), dtype=np.complex)
+            #self.c = np.zeros((self.ham.nbath, self.Nk), dtype=np.complex)
+            self.c = np.zeros((self.ham.nbath, self.Nk), dtype=complex)
             self.gamma = np.zeros((self.ham.nbath, self.Nk))
             for j in range(self.ham.nbath):
                 lamdaj = self.ham.sd[j].lamda
@@ -330,7 +331,7 @@ class HEOM(Unitary):
         rho_hierarchy.append(rho_site)
         for n in range(1,len(self.nmats)): 
             rho_hierarchy.append(np.zeros_like(rho_site))
-        return np.array(rho_hierarchy, dtype=np.complex)
+        return np.array(rho_hierarchy, dtype=complex)
 
     def reduce_to_rdm(self, rho_hierarchy):
         if rho_hierarchy.ndim == 3:
